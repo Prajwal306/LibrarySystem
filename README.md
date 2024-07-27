@@ -1,7 +1,23 @@
-Here's an updated `README.md` for your `LibrarySystem` project, including Docker instructions:
+Adding a screenshot of the UI to your README is a great way to give users a visual preview of your application. Here’s how you can do it:
 
----
+### Steps to Add a Screenshot
 
+1. **Take a Screenshot:**
+   - Open your application in a web browser.
+   - Capture a screenshot of the UI using your operating system's screenshot tool:
+     - **Windows:** Press `PrtScn` or use `Snipping Tool` / `Snip & Sketch`.
+     - **macOS:** Press `Cmd + Shift + 4` to select a portion of the screen.
+     - **Linux:** Use `Print Screen` or tools like `gnome-screenshot`.
+
+2. **Save the Screenshot:**
+   - Save the screenshot file (e.g., `ui_screenshot.png`) to your project directory, preferably in a dedicated `assets` or `docs` folder to keep things organized.
+
+3. **Update the README:**
+   - Add a section in your README to include the screenshot. Use Markdown to embed the image. Ensure that the path to the image file is correct.
+
+Here’s how you can update your README to include a screenshot:
+
+```markdown
 # Library System
 
 This is a simple library system built with Node.js, following the SOLID design principles. It allows you to manage books in a library, including adding new books, retrieving a list of all books, borrowing books, and returning books.
@@ -15,8 +31,8 @@ This is a simple library system built with Node.js, following the SOLID design p
 
 ## Project Structure
 
-```plaintext
-LibrarySystem/
+```
+library-system/
 ├── src/
 │   ├── controllers/
 │   │   ├── bookController.js
@@ -28,12 +44,16 @@ LibrarySystem/
 │   │   ├── bookService.js
 │   ├── routes/
 │   │   ├── bookRoutes.js
+│   ├── public/
+│   │   ├── index.html
 │   ├── app.js
-├── Dockerfile
-├── .dockerignore
-├── docker-compose.yml
 ├── package.json
 ├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+└── assets/
+    ├── ui_screenshot.png
 ```
 
 ## Installation
@@ -41,8 +61,8 @@ LibrarySystem/
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/LibrarySystem.git
-   cd LibrarySystem
+   git clone https://github.com/your-username/library-system.git
+   cd library-system
    ```
 
 2. Install dependencies:
@@ -53,15 +73,15 @@ LibrarySystem/
 
 ## Usage
 
-### Without Docker
-
-1. Start the server:
+1. **Start the server locally:**
 
    ```sh
    node src/app.js
    ```
 
-2. The server will start and listen on port 3000. You can interact with the API using the following endpoints:
+   The server will start and listen on port 3000. You can interact with the API using the following endpoints:
+
+   ### Endpoints
 
    - **Add a new book**
      - **URL:** `POST /api/books`
@@ -97,31 +117,97 @@ LibrarySystem/
      - **URL:** `PUT /api/books/return/:id`
      - **Response:** `200 OK` or `400 Bad Request`
 
-### With Docker
+2. **Start with Docker:**
 
-1. **Build the Docker Image:**
+   Ensure you have Docker and Docker Compose installed.
 
-   ```sh
-   docker build -t LibrarySystem .
-   ```
-
-2. **Run the Docker Container:**
-
-   ```sh
-   docker run -p 3000:3000 LibrarySystem
-   ```
-
-3. **Using Docker Compose (Optional):**
-
-   If you want to use Docker Compose to manage both your Node.js application and MySQL:
-
-   - **Start the services:**
+   - **Build and run the Docker containers:**
 
      ```sh
-     docker-compose up
+     docker-compose up --build
      ```
 
-   This command will start both the `LibrarySystem` application and a MySQL container. The application will be accessible at `http://localhost:3000`.
+   - **Access the application:**
+
+     The application will be accessible at `http://localhost:3000`.
+
+3. **Access the UI:**
+
+   - **Open your web browser and navigate to `http://localhost:3000`** to view the UI for the Library System.
+
+## UI Screenshot
+
+Below is a screenshot of the Library System's UI:
+![UI Screenshot](image.png)
+
+## Docker Setup
+
+### Dockerfile
+
+This Dockerfile sets up the Node.js environment for the application.
+
+```Dockerfile
+# Use the official Node.js image.
+FROM node:16
+
+# Set the working directory.
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json.
+COPY package*.json ./
+
+# Install dependencies.
+RUN npm install
+
+# Copy the rest of the application code.
+COPY . .
+
+# Expose port 3000.
+EXPOSE 3000
+
+# Start the application.
+CMD ["node", "src/app.js"]
+```
+
+### docker-compose.yml
+
+This Docker Compose configuration sets up both the Node.js application and MySQL.
+
+```yaml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_NAME: librarydb
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_HOST: db
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: librarydb
+    ports:
+      - "3306:3306"
+```
+
+## Environment Variables
+
+Ensure you have a `.env` file in the root of your project with the following variables:
+
+```
+DB_NAME=librarydb
+DB_USER=root
+DB_PASSWORD=example
+DB_HOST=db
+```
 
 ## Design Principles
 
@@ -143,4 +229,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Feel free to adjust any parts of the `README.md` to better fit your project specifics!
+With these steps, you should be able to include a visual preview of your UI in the README. Let me know if you need any further assistance!
