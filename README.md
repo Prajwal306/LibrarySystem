@@ -1,22 +1,3 @@
-Adding a screenshot of the UI to your README is a great way to give users a visual preview of your application. Here’s how you can do it:
-
-### Steps to Add a Screenshot
-
-1. **Take a Screenshot:**
-   - Open your application in a web browser.
-   - Capture a screenshot of the UI using your operating system's screenshot tool:
-     - **Windows:** Press `PrtScn` or use `Snipping Tool` / `Snip & Sketch`.
-     - **macOS:** Press `Cmd + Shift + 4` to select a portion of the screen.
-     - **Linux:** Use `Print Screen` or tools like `gnome-screenshot`.
-
-2. **Save the Screenshot:**
-   - Save the screenshot file (e.g., `ui_screenshot.png`) to your project directory, preferably in a dedicated `assets` or `docs` folder to keep things organized.
-
-3. **Update the README:**
-   - Add a section in your README to include the screenshot. Use Markdown to embed the image. Ensure that the path to the image file is correct.
-
-Here’s how you can update your README to include a screenshot:
-
 ```markdown
 # Library System
 
@@ -226,7 +207,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-With these steps, you should be able to include a visual preview of your UI in the README. Let me know if you need any further assistance!
