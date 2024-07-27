@@ -1,6 +1,3 @@
-Here's an updated `README.md` for your `LibrarySystem` project, including Docker instructions:
-
----
 
 # Library System
 
@@ -140,7 +137,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to adjust any parts of the `README.md` to better fit your project specifics!
