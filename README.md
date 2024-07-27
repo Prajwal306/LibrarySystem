@@ -12,7 +12,6 @@ This is a simple library system built with Node.js, following the SOLID design p
 
 ## Project Structure
 
-```
 library-system/
 ├── src/
 │   ├── controllers/
@@ -35,7 +34,6 @@ library-system/
 ├── README.md
 └── assets/
     ├── ui_screenshot.png
-```
 
 ## Installation
 
